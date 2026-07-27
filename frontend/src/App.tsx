@@ -109,7 +109,8 @@ function MainDashboard() {
         symptoms: selectedSymptoms
       };
 
-      const response = await fetch('http://127.0.0.1:8000/api/predict-disease', {
+      const API_URL = import.meta.env.VITE_API_URL;
+      const response = await fetch(`${API_URL}/api/predict-disease`, {
         method: 'POST',
         headers,
         body: JSON.stringify(payload),
