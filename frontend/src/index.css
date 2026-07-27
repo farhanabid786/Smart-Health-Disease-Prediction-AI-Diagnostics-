@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap');
+@import "tailwindcss";
+
+/* --- Multi-Font Design System --- */
+:root {
+  font-family: 'Poppins', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  color-scheme: dark light;
+}
+
+/* Font Classes */
+.font-poppins {
+  font-family: 'Poppins', system-ui, sans-serif;
+}
+
+.font-serif-title {
+  font-family: 'Playfair Display', 'Times New Roman', Times, serif;
+}
+
+.font-sans-body {
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+}
+
+/* Light Theme: Sesame.ai Warm Organic High-Contrast Aesthetic */
+html.light body {
+  background-color: #FAF8F5;
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(13, 148, 136, 0.08), transparent 400px),
+    radial-gradient(circle at 85% 85%, rgba(79, 70, 229, 0.07), transparent 450px),
+    radial-gradient(circle at 50% 50%, rgba(245, 242, 236, 0.9), transparent 1000px);
+  color: #0F172A;
+}
+
+/* Dark Theme: Google Antigravity Deep Space Cosmic Neon Aesthetic */
+html.dark body {
+  background-color: #070913;
+  background-image: 
+    radial-gradient(circle at top right, rgba(20, 184, 166, 0.14), transparent 450px),
+    radial-gradient(circle at bottom left, rgba(99, 102, 241, 0.16), transparent 450px),
+    radial-gradient(circle at 50% 30%, rgba(6, 182, 212, 0.09), transparent 600px);
+  color: #F8FAFC;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#root {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  min-height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  text-align: left !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+html.light ::-webkit-scrollbar-track {
+  background: #F5F2EC;
+}
+html.light ::-webkit-scrollbar-thumb {
+  background: #A8A29E;
+  border-radius: 9999px;
+  border: 2px solid #FAF8F5;
+}
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: #0D9488;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #070913;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 9999px;
+  border: 2px solid #070913;
+}
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #14B8A6;
+}
+
+/* High-Contrast Glassmorphism Cards */
+html.light .glass-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid #D6D3D1;
+  box-shadow: 0 10px 30px -5px rgba(28, 25, 23, 0.08);
+}
+
+html.dark .glass-card {
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+}
+
+/* Micro-animations */
+@keyframes antigravity-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.antigravity-float {
+  animation: antigravity-float 4s ease-in-out infinite;
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.88;
+    transform: scale(1.03);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-subtle 3s infinite ease-in-out;
+}
