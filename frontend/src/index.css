@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Dancing+Script:wght@600;700&family=Great+Vibes&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 /* --- Multi-Font Design System --- */
 :root {
-  font-family: 'Poppins', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  font-family: 'Outfit', 'Plus Jakarta Sans', 'Poppins', system-ui, -apple-system, sans-serif;
   color-scheme: dark light;
 }
 
@@ -17,7 +17,19 @@
 }
 
 .font-sans-body {
-  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Outfit', 'Inter', system-ui, sans-serif;
+}
+
+.font-cursive {
+  font-family: 'Caveat', 'Dancing Script', cursive;
+}
+
+.font-cursive-accent {
+  font-family: 'Dancing Script', 'Caveat', cursive;
+}
+
+.font-stylish {
+  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
 }
 
 /* Light Theme: Sesame.ai Warm Organic High-Contrast Aesthetic */
@@ -57,6 +69,49 @@ body {
   display: flex !important;
   flex-direction: column !important;
   text-align: left !important;
+}
+
+/* --- Shape Grid Patterns --- */
+.bg-grid-light {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(201, 154, 104, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(201, 154, 104, 0.08) 1px, transparent 1px);
+}
+
+.bg-grid-dark {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(20, 184, 166, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(20, 184, 166, 0.07) 1px, transparent 1px);
+}
+
+/* --- Liquid Chrome Glowing Orbs --- */
+@keyframes liquid-chrome-spin {
+  0% {
+    transform: rotate(0deg) scale(1);
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  }
+  33% {
+    transform: rotate(120deg) scale(1.1);
+    border-radius: 60% 40% 30% 70% / 50% 30% 70% 50%;
+  }
+  66% {
+    transform: rotate(240deg) scale(0.95);
+    border-radius: 30% 70% 50% 50% / 30% 60% 40% 70%;
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  }
+}
+
+.liquid-chrome-orb-1 {
+  animation: liquid-chrome-spin 18s ease-in-out infinite alternate;
+}
+
+.liquid-chrome-orb-2 {
+  animation: liquid-chrome-spin 22s ease-in-out infinite alternate-reverse;
 }
 
 /* Custom Scrollbar */
@@ -105,18 +160,18 @@ html.dark .glass-card {
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
 }
 
-/* Micro-animations */
+/* Antigravity Floating keyframes */
 @keyframes antigravity-float {
   0%, 100% {
-    transform: translateY(0px);
+    transform: translateY(0px) rotate(0deg);
   }
   50% {
-    transform: translateY(-6px);
+    transform: translateY(-8px) rotate(1deg);
   }
 }
 
 .antigravity-float {
-  animation: antigravity-float 4s ease-in-out infinite;
+  animation: antigravity-float 5s ease-in-out infinite;
 }
 
 @keyframes pulse-subtle {
@@ -132,4 +187,29 @@ html.dark .glass-card {
 
 .pulse-glow {
   animation: pulse-subtle 3s infinite ease-in-out;
+}
+
+/* Reactbits Animation Keyframes */
+@keyframes reactbitsFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes shinyTextSheen {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shiny-text {
+  animation: shinyTextSheen 4s linear infinite;
 }

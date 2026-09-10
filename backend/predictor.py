@@ -4,7 +4,7 @@ import logging
 from typing import List
 from pydantic import BaseModel, Field
 from dotenv import load_dotenv
-import google.generativeai as genai
+# google.generativeai import moved inside function to avoid import error when module missing
 
 load_dotenv()
 

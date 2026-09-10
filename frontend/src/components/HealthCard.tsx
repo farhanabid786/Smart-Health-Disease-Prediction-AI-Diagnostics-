@@ -125,7 +125,10 @@ export const HealthCard: React.FC<HealthCardProps> = ({ data, onChange }) => {
               <Shield className="h-6 w-6" />
             </div>
             <div>
-              <h3 className="font-extrabold tracking-wide text-base sm:text-lg uppercase">SMART HEALTH PASSPORT</h3>
+              <h3 className="font-extrabold tracking-wide text-base sm:text-lg uppercase flex items-center gap-1.5 flex-wrap">
+                SMART HEALTH PASSPORT 
+                <span className="font-cursive text-teal-400 text-2xl font-normal lowercase italic">digital passport</span>
+              </h3>
               <p className={`text-xs font-bold tracking-widest ${isDark ? 'text-teal-400' : 'text-teal-600'}`}>{data.health_id}</p>
             </div>
           </div>

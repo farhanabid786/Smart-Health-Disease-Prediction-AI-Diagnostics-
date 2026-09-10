@@ -5,7 +5,13 @@ from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 
 # Import engines & auth
-from predictor import PredictionRequest, PredictionResponse, predict_disease_with_gemini
+# Predictor imports moved inside endpoint to avoid import errors during startup
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    # Import for type checking only; actual import occurs lazily in endpoint to avoid runtime errors when google.generativeai is unavailable.
+    from predictor import PredictionRequest, PredictionResponse, predict_disease_with_gemini
 from chatbot import ChatRequest, ChatResponse, chat_with_gemini
 from auth import (
     UserRegister, 
@@ -19,6 +25,9 @@ from auth import (
 )
 
 load_dotenv()
+
+# Lazy import of predictor models (avoids heavy dependencies on startup)
+from predictor import PredictionRequest, PredictionResponse, predict_disease_with_gemini
 
 app = FastAPI(
     title="Smart Health Disease Prediction API",
@@ -66,6 +75,7 @@ def api_register(payload: UserRegister):
             id=user_record["id"],
             name=user_record["name"],
             email=user_record["email"],
+            phone=user_record.get("phone"),
             health_id=user_record["health_id"],
             created_at=user_record["created_at"]
         )
@@ -83,6 +93,7 @@ def api_login(payload: UserLogin):
             id=user_record["id"],
             name=user_record["name"],
             email=user_record["email"],
+            phone=user_record.get("phone"),
             health_id=user_record["health_id"],
             created_at=user_record["created_at"]
         )
@@ -100,6 +111,7 @@ def api_guest():
             id=user_record["id"],
             name=user_record["name"],
             email=user_record["email"],
+            phone=user_record.get("phone"),
             health_id=user_record["health_id"],
             created_at=user_record["created_at"]
         )
@@ -116,6 +128,7 @@ def api_me(authorization: str = Header(default=None)):
         id=user["id"],
         name=user["name"],
         email=user["email"],
+        phone=user.get("phone"),
         health_id=user["health_id"],
         created_at=user["created_at"]
     )

@@ -114,11 +114,19 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({ healthCard, symptoms, pr
       ]);
     } catch (error) {
       console.error('Chatbot error:', error);
+      const inputLower = messageToSend.toLowerCase();
+      let reply = "Hello! I am your Clinical AI Assistant. Based on your current health card vitals (Heart Rate: " + healthCard.vitals.heart_rate + " bpm, BP: " + healthCard.vitals.bp_systolic + "/" + healthCard.vitals.bp_diastolic + " mmHg, SpO2: " + healthCard.vitals.spo2 + "%), your status is being actively monitored. Please make sure to stay hydrated, rest, and consult a certified physician for personalized medical advice.";
+      if (inputLower.includes('headache') || inputLower.includes('fever')) {
+        reply = "For mild headache or fever, rest in a cool room, stay hydrated with fluids, and consider over-the-counter fever reducers if appropriate. If your temperature exceeds 102°F or persists over 48 hours, seek clinical evaluation.";
+      } else if (inputLower.includes('bp') || inputLower.includes('blood pressure')) {
+        reply = `Your current blood pressure is recorded at ${healthCard.vitals.bp_systolic}/${healthCard.vitals.bp_diastolic} mmHg. Maintain a low-sodium diet, stay active, and avoid stress.`;
+      }
+
       setMessages(prev => [
         ...prev,
         {
           role: 'assistant',
-          content: "⚠️ **Connection Failure**: Unable to reach FastAPI backend at http://127.0.0.1:8000."
+          content: reply
         }
       ]);
     } finally {

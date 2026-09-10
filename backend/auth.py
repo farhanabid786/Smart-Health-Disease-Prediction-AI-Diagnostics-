@@ -14,6 +14,7 @@ class UserRegister(BaseModel):
     name: str = Field(..., description="Full Name of the user")
     email: str = Field(..., description="Email address")
     password: str = Field(..., min_length=6, description="Password (min 6 chars)")
+    phone: Optional[str] = Field(default=None, description="Optional phone number")
     health_id: Optional[str] = Field(default=None, description="Optional custom Smart Health ID")
 
 class UserLogin(BaseModel):
@@ -24,6 +25,7 @@ class UserResponse(BaseModel):
     id: str
     name: str
     email: str
+    phone: Optional[str] = None
     health_id: str
     created_at: str
 
@@ -84,6 +86,7 @@ def register_user(payload: UserRegister) -> tuple[dict, str]:
         "id": user_id,
         "name": payload.name.strip(),
         "email": email_clean,
+        "phone": payload.phone.strip() if payload.phone else None,
         "password_hash": hashed_pwd,
         "salt": salt,
         "health_id": health_id,

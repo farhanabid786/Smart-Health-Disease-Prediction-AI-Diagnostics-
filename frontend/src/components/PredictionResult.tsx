@@ -106,7 +106,10 @@ export const PredictionResult: React.FC<PredictionResultProps> = ({ prediction, 
           <div className={`rounded-xl p-2.5 ${isDark ? 'bg-teal-500/15 text-teal-400 border border-teal-500/20' : 'bg-teal-100 text-teal-700'}`}>
             <ShieldAlert className="h-5 w-5" />
           </div>
-          <h3 className="font-extrabold tracking-wide text-sm sm:text-base">DIAGNOSTIC CONCLUSION</h3>
+          <h3 className="font-extrabold tracking-wide text-sm sm:text-base flex items-center gap-1.5 flex-wrap">
+            DIAGNOSTIC CONCLUSION
+            <span className="font-cursive text-teal-400 text-2xl font-normal lowercase italic">clinical analysis</span>
+          </h3>
         </div>
         <span className={`text-xs px-3 py-1 rounded-full border font-bold uppercase tracking-wider ${riskStyle.badge}`}>
           {prediction.risk_level} Risk
