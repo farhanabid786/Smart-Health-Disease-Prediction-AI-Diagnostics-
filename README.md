@@ -331,7 +331,7 @@ Make sure the backend is running on port `8000`, then set `VITE_API_URL` in `fro
 
 ## License
 
-No license file is currently included. Add a `LICENSE` file before distributing this project publicly.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ---
 
