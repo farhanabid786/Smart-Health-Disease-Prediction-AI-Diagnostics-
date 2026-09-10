@@ -1,5 +1,6 @@
 import os
 import uvicorn
+from pathlib import Path
 from fastapi import FastAPI, HTTPException, Header, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
@@ -24,7 +25,7 @@ from auth import (
     get_user_by_token
 )
 
-load_dotenv()
+load_dotenv(dotenv_path=Path(__file__).with_name('.env'))
 
 # Lazy import of predictor models (avoids heavy dependencies on startup)
 from predictor import PredictionRequest, PredictionResponse, predict_disease_with_gemini

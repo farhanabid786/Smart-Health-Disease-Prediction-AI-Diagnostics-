@@ -1,12 +1,13 @@
 import os
 import json
 import logging
+from pathlib import Path
 from typing import List
 from pydantic import BaseModel, Field
 from dotenv import load_dotenv
-# google.generativeai import moved inside function to avoid import error when module missing
+import google.generativeai as genai
 
-load_dotenv()
+load_dotenv(dotenv_path=Path(__file__).with_name('.env'))
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
